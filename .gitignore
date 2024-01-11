@@ -1,0 +1,39 @@
+!jest.config.js
+node_modules
+newman
+js
+.cache
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+build
+template.yaml
+
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.aws-sam
+
+# Apple system files
+.DS_Store
+.dccache
+
+# Python cache and DLLs
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Google Credentials
+**/credentials.json
+**/token.json
+**/service-account.json
+
+# JetBrains IDEs
+.idea/
