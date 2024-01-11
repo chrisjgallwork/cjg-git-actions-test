@@ -30,7 +30,6 @@ jobs:
     steps:
     - name: Manual Approval
       id: approval
-      uses: wei/cross-env-action@v1
       with:
         COMMAND: 'read -p "Do you approve this deployment? (y/n): " answer && echo "::set-output name=approved::${answer}"'
       env:
