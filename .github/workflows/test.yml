@@ -37,7 +37,7 @@ jobs:
       env:
         CI: true
     - name: Check Approval
-      run: echo "Approval status: ${{ steps.approval.outputs.approved }}"
+      run: echo "Approval status"
       if: steps.approval.outputs.approved == 'y'
   build-prod:
     # The type of runner that the job will run on
