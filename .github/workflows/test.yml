@@ -31,19 +31,10 @@ jobs:
       - name: Test
         run: |
           command that fails
-  approve-stage-test-failed:
+  approve-stage:
     runs-on: ubuntu-latest
     needs: test-stage
-    if: failure()
-    steps:
-      - uses: actions/checkout@v3
-      - name: Approve
-        run: |
-          npm install
-  approve-stage-test-succeeded:
-    runs-on: ubuntu-latest
-    needs: test-stage
-    if: success()
+    if: failure() || success()
     steps:
       - uses: actions/checkout@v3
       - name: Approve
@@ -52,12 +43,7 @@ jobs:
   build-prod:
     runs-on: ubuntu-latest
     needs:
-      - build-stage
-      - approve-stage-test-failed
-      - approve-stage-test-succeeded
-    if: |
-        always() &&
-        ${{ needs.approve-stage-test-failed.result == 'success' || needs.approve-stage-test-succeeded.result == 'success' }}
+      - approve-stage
     steps:
       - uses: actions/checkout@v3
       - name: Build
